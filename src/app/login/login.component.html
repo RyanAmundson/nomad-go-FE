@@ -1,0 +1,39 @@
+<div class="login-container">
+  <div class="image-container">
+    <img src="assets/images/icon.png" alt="Logo" height="350px" width="350px" />
+  </div>
+  <button class="login-button" mat-stroked-button color="primary">
+    
+    <mat-icon
+      *ngIf="
+        status() == LoginState.LoggedIn || status() == LoginState.LoggedOut
+      "
+    >
+      <img
+        src="assets/images/instagram-icon-white-50.png"
+        alt="Instagram"
+        height="16px"
+        width="16px"
+    /></mat-icon>
+    
+    <mat-icon *ngIf="status() == LoginState.ErrorWhileLoggingIn">error</mat-icon>
+
+    <span *ngIf="status() === LoginState.LoggedIn" (click)="continue()">
+      Continue as {{ (socialAuth.authState | async)?.name }}
+    </span>
+
+    <span *ngIf="status() === LoginState.LoggedOut" (click)="login()">
+      Login
+    </span>
+
+    <span *ngIf="status() === LoginState.LoggingIn">
+      <mat-spinner color="primary" diameter="25"></mat-spinner>
+    </span>
+
+    <span *ngIf="status() == LoginState.ErrorWhileLoggingIn">
+      Login Failed
+    </span>
+
+  </button>
+  <a (click)="logout()" *ngIf="authService.isLoggedIn$ | async"> Not you? </a>
+</div>

@@ -1,0 +1,22 @@
+<div *ngIf="filters$; else noFilters">
+  <h2>Filters</h2>
+
+  <h4>Places</h4>
+  
+  <mat-chip-listbox
+    aria-label="Place Filter"
+    [multiple]="true"
+    (change)="filterChange($event)"
+  >
+    <mat-chip-option
+      color="primary"
+      *ngFor="let filter of filters$ | async | keyvalue"
+    >
+      {{ filter.key }}
+    </mat-chip-option>
+  </mat-chip-listbox>
+</div>
+
+<ng-template #noFilters>
+  <p>No filters available</p>
+</ng-template>

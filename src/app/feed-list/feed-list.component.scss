@@ -1,0 +1,64 @@
+:host {
+  height: 100%;
+  width: 100%;
+}
+
+.feed-list-container {
+  h4 {
+    color: white;
+  }
+  background: black;
+  padding: 1rem;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: auto;
+
+  app-masonry {
+    margin:0 auto;
+    display:block;
+    max-width: 1000px;
+  }
+}
+
+.loading-container {
+
+  box-sizing: border-box;
+
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+
+}
+app-filters {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  max-width:1000px;
+  margin:auto;
+}
+
+
+.side-nav {
+  height:100%;
+  width:100%;
+  mat-drawer {
+    padding:0.3rem;
+    max-width:60%;
+    background-color: black;
+    min-width:200px;
+  }
+
+  mat-drawer-content {
+    overflow: hidden;
+  }
+}
+
+mat-toolbar {
+  display:flex;
+  justify-content: space-between;
+  background-image: url('/assets/images/Contour Line.svg');
+  box-shadow: 0 7px 14px rgba(0,0,0,1), 0 10px 10px rgba(0,0,0,1);
+}

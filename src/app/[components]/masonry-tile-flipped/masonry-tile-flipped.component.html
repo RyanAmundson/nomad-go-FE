@@ -1,0 +1,15 @@
+<div *ngIf="post" class="facebook-post-card">
+  <div class="header">
+    <div class="header-info">
+      <span>{{ post.name }}</span>
+      <p>Created: {{ post.created_time | date }}</p>
+    </div>
+    <img class="icon" [src]="post.full_picture" alt="icon" />
+  </div>
+  <div class="body">
+    <p>{{ post.message }}</p>
+  </div>
+  <div class="footer">
+    <a [href]="post.permalink_url">View Post</a>
+  </div>
+</div>

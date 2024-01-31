@@ -1,0 +1,31 @@
+<div
+  class="masonry-tile"
+  [class.flipped]="showDetails === true"
+>
+  <div
+    class="front-face container image-container"
+    (click)="tileClick()"
+  >
+    <img
+
+      class="image"
+      *ngIf="!noImage()"
+      [src]="content?.full_picture"
+      [alt]="content?.message"
+      (onerror)="imageError()"
+    />
+
+    <div
+      class="placeholder"
+      *ngIf="noImage()"
+      alt="placeholder"
+      (click)="tileClick()"
+    ></div>
+  </div>
+
+  <button *ngIf="!expanded" class="expand-button" color="primary" (click)="expandEmit()" mat-fab-button><mat-icon color="primary">open_in_full</mat-icon></button>
+
+  <div (click)="tileClick()" class="back-face container content-container">
+    <app-masonry-tile-flipped [post]="content"></app-masonry-tile-flipped>
+  </div>
+</div>

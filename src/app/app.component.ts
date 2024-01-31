@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { ApplicationInitStatus, Component, inject } from '@angular/core';
+import { UserService } from './[services]/user.service';
+import { lastValueFrom } from 'rxjs';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'nomad-go-FE';
+  private user: UserService = inject(UserService);
+  private appInitStatus: ApplicationInitStatus = inject(ApplicationInitStatus);
+  appReady = Promise.all([this.appInitStatus.donePromise, lastValueFrom(this.user.user$)]).then(() => true);
 }

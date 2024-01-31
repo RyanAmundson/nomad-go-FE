@@ -1,1 +1,122 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@include mat.core();
+
+
+
+$primary: mat.define-palette(mat.$deep-purple-palette);
+$accent: mat.define-palette(mat.$green-palette);
+$warn: mat.define-palette(mat.$red-palette);
+
+
+$dark-primary-text: #dbccb6; // Black for dark text
+$light-primary-text: #806f23; // White for light
+
+
+$custom-palette: (
+  50: #f5eee8,
+  100: #e8d9cc,
+  200: #dbccb6,
+  300: #cdbfa1,
+  400: #c0b28c,
+  500: #b3a577,
+  600: #a79762,
+  700: #9a8a4d,
+  800: #8d7c38,
+  900: #806f23,
+  A100: #f5eee8,
+  A200: #dbccb6,
+  A400: #b3a577,
+  A700: #806f23,
+  contrast: (50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  ),
+);
+
+$custom-primary: mat.define-palette($custom-palette);
+$custom-accent: mat.define-palette(mat.$blue-grey-palette); // Grey as an accent
+
+$custom-theme: mat.define-light-theme((color: (primary: $custom-primary,
+        accent: $custom-accent, // You can create a separate accent palette if needed
+        warn: $warn, // Using default warn palette
+      ),
+    ));
+
+
+// Define a dark theme
+$dark-theme: mat.define-dark-theme((color: (primary:$primary,
+        accent: $accent,
+        warn: $warn,
+      ),
+      // Only include `typography` and `density` in the default dark theme.
+      typography: mat.define-typography-config(),
+      density: 0,
+    ));
+
+
+// Define a light theme
+$light-theme: mat.define-light-theme((color: (primary:$primary,
+        accent: $accent,
+        warn: $warn,
+      ),
+    ));
+
+
+
+// Apply the dark theme by default
+@include mat.core-theme($custom-theme);
+@include mat.all-component-themes($custom-theme);
+
+
+
+
+/**
+  * Override the default scrollbar styles for Chrome, Edge, and Safari
+  * See https://css-tricks.com/custom-scrollbars-in-webkit/
+*/
+
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background:black;
+}
+
+/* Styles for the scrollbar track (the part the thumb moves along) */
+::-webkit-scrollbar-track {
+  background-color: #2E2E2E; /* Dark track background */
+}
+
+/* Styles for the scrollbar thumb (the draggable element) */
+::-webkit-scrollbar-thumb {
+  background-color: #555; /* Dark thumb color */
+  border-radius: 10px; /* Rounded corners on the thumb */
+  border: 3px solid #2E2E2E; /* Creates a border around the thumb */
+}
+
+/* Styles for the scrollbar width and height */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the vertical scrollbar */
+  height: 12px; /* Height of the horizontal scrollbar */
+}
+
+/* Firefox requires a different approach */
+* {
+  scrollbar-width: thin; /* "auto" or "thin" */
+  scrollbar-color: #555 #2E2E2E; /* thumb and track color */
+}

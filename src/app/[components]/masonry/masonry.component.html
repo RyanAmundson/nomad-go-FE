@@ -1,0 +1,11 @@
+<mat-grid-list [cols]="columns$ | async" [rowHeight]="rowHeight" [gutterSize]="gutterSize" >
+  <div [@fade]="tiles?.length">
+    <mat-grid-tile
+    *ngFor="let tile of tiles; trackBy: trackBy; let i = index; let last = last"
+    [colspan]="tile?.cols"
+    [rowspan]="tile?.rows"
+    >
+    <app-masonry-tile [content]="tile" [id]="i" (expand)="expand(i)"></app-masonry-tile>
+  </mat-grid-tile>
+</div>
+</mat-grid-list>

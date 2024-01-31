@@ -1,0 +1,28 @@
+
+:host {
+  height:100%;
+  background:black;
+}
+
+.login-container {
+  height:calc(100% - 64px);
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(67 86 96);
+  background-color:rgb(4 0 0);
+  
+  .image-container {
+    display: flex;
+  }
+
+  a {
+    margin-top:1rem;
+    color: white;
+    font-size:9px;
+    cursor: pointer;
+  }
+
+}
+

@@ -1,0 +1,12 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+@use '../styles';
+
+$config: mat.get-color-config(styles.$custom-theme);
+$primary: map-get($config, 'primary');
+$accent: map-get($config, 'accent');
+$warn: map-get($config, 'warn');
+
+
+$header-height: 64px;
+$font-size: map-get($config, 'font-size');

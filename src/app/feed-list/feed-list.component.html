@@ -1,0 +1,21 @@
+<mat-drawer-container color="primary" class="side-nav">
+  <mat-drawer #drawer mode="over">
+    <app-filters></app-filters>
+  </mat-drawer>
+  <mat-drawer-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>filter_alt</mat-icon>
+      </button>
+    </mat-toolbar>
+    <div #feedList class="feed-list-container">
+      <ng-container>
+        <app-masonry [tiles]="filteredPosts$ | async"></app-masonry>
+
+        <div class="loading-container" *ngIf="loading()">
+          <mat-spinner color="primary" diameter="25"></mat-spinner>
+        </div>
+      </ng-container>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

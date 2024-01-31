@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/nomad-go-fe",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+<mat-toolbar @heightAnimation color="primary" *ngIf="hidden() === false">
+  <img src="assets/images/icon.png" alt="Logo" height="50px" width="50px" />
+  <ng-container *ngIf="userService.user$ | async">
+    <button mat-button [matMenuTriggerFor]="menu">
+      <app-persona></app-persona>
+    </button>
+  </ng-container>
+</mat-toolbar>
+
+<mat-menu color="primary" #menu="matMenu">
+  <button mat-menu-item (click)="logout()">Logout</button>
+
+</mat-menu>

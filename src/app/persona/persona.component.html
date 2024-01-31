@@ -1,0 +1,10 @@
+<div class="persona-container">
+  <div class="persona__name">{{ (user$ | async)?.name }}</div>
+  <img class="persona__image" [src]="(user$ | async)?.photoUrl" (onerror)="failedToLoadProfileImage()" *ngIf="!noImage" />
+  <mat-icon *ngIf="noImage"
+    class="example-icon"
+    aria-hidden="false"
+    aria-label="verified icon"
+    >verified_user</mat-icon
+  >
+</div>
